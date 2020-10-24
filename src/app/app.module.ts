@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 import { FullCalendarModule } from '@fullcalendar/angular';
 // import dayGridPlugin from '@fullcalendar/daygrid';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,7 @@ import { TurnosComponent } from './turnos/turnos.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     FullCalendarModule
   ],
   providers: [],

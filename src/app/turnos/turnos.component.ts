@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarContent, CalendarData, CalendarDataProvider, CalendarOptions } from '@fullcalendar/angular';
+import { Turno } from './Turno';
+import { Calendar, CalendarContent, CalendarData, CalendarDataProvider, CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -12,34 +13,43 @@ import interactionPlugin from '@fullcalendar/interaction';
 })
 export class TurnosComponent implements OnInit {
 
-  eventsDB: any; //Averiguar de que tipo es esta variable
+  // eventsDB: any; //Averiguar de que tipo es esta variable
   calendarOptions: CalendarOptions; 
   lang: string;
-
+  
+  public misTurnos: any = [];
+  public eventsDB: any;
+  public turno: Turno;
 
   constructor() { 
     this.lang= navigator.language;
+    this.turno= {
+      title: '',
+      start: new Date(),
+      end: new Date(),
+      description: ''
+    }
     this.eventsDB = [
       {
         title: "El Pepaaa",
-        start: '2020-10-23T10:00:00',
-        end: '2020-10-23T16:00:00',
+        start: '2020-10-24T10:00',
+        end: '2020-10-24T16:00',
         description: "ndeah"
       },
       {
         title: "El Pepe",
-        start: '2020-11-10T10:00:00',
-        end: '2020-11-10T16:00:00',
+        start: '2020-11-10T10:00',
+        end: '2020-11-10T16:00',
       },
       {
         title: "El Pepa",
-        start: '2020-10-10T10:00:00',
-        end: '2020-10-10T16:00:00',
+        start: '2020-10-10T10:00',
+        end: '2020-10-10T16:00',
       },
       {
         title: "El Pepa",
-        start: '2020-10-10T16:30:00',
-        end: '2020-10-10T17:00:00',
+        start: '2020-10-10T16:30',
+        end: '2020-10-10T17:00',
         description:"sape",
       }
     ] 
@@ -59,6 +69,39 @@ export class TurnosComponent implements OnInit {
         console.log(e); //Esto serviria para ir a otro Componente con detalles sobre el evento
       },      
     }
+  }
+
+  addEvent(){
+    console.log(this.turno);
+    this.eventsDB.push(this.turno);
+    console.log(this.eventsDB);
+    var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+    let value = {
+      title: this.turno.title,
+      start: new Date(this.turno.start).toLocaleDateString("es-ES", options),
+      end: new Date(this.turno.end).toLocaleDateString("es-ES", options),
+      description: this.turno.description
+    }
+    this.misTurnos.push(value);
+    this.turno= {
+      title: '',
+      start: new Date(),
+      end: new Date(),
+      description: ''
+    }
+    // if(this.timecheck){
+
+    // }
+  }
+  timecheck(value){
+    let check: boolean= false
+    for (let e of this.eventsDB) {
+      if(this.turno.start >= e.start && this.turno.start <= e.start){
+        console.log(e);
+      }
+    }
+
+    return check;
   }
 
   //Ver como implementar el Hover para ver la description del evento
