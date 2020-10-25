@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <!-- <full-calendar class="calendar" [events]="events" [options]="calendarOptions" (mouseover)="viewDetail()"></full-calendar> -->
             <full-calendar 
                 class="" 
@@ -13,50 +13,19 @@
     </div>
     <div class="row">
         <div class="col-md-8"> -->
-            <section>
-                <h2>Agregar Turno</h2>
-
-                <form class="form" #turnoForm="ngForm" (ngSubmit)="addEvent()">
-                    <div class="form-group">
-                        <input type="text" class="form-control" [(ngModel)]='turno.title' name="title" #title='ngModel' placeholder="Titulo" aria-label="Username" aria-describedby="basic-addon1" required>
-                        <small class="text-danger" *ngIf="!title.valid && title.touched">
-                            El titulo no es valido
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" class="form-control" [(ngModel)]='turno.start' name="start"  #dateStart='ngModel' placeholder="Fecha De Inicio" aria-label="DateStart" aria-describedby="basic-addon1" required>
-                        <small class="text-danger" *ngIf="!dateStart.valid && dateStart.touched">
-                            La Fecha de inicio no es valida
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" class="form-control" [(ngModel)]='turno.end'  name="end" #dateEnd='ngModel' placeholder="Fecha de Fin" aria-label="DateEnd" aria-describedby="basic-addon1" required>
-                        <small class="text-danger" *ngIf="!dateEnd.valid && dateEnd.touched">
-                            La Fecha de fin no es valida
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <textarea  type="datetime-local" class="form-control" [(ngModel)]='turno.description'  name="description" #description='ngModel' placeholder="Descripcion" aria-label="With textarea"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success" type="submit" >Agregar</button>
-                    </div>
-                </form>
-            </section>
+            <app-form-turnos 
+                [(eventsDB)]="eventsDB"
+                [(misTurnos)]="misTurnos"
+                (addMiTurno)=addMiTurno($event)
+                (showError)= showError($event)
+            >
+            </app-form-turnos>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <section>
                 <h2>Mis Turnos</h2>
                 <ul class="list-group">
-                    <li *ngFor="let turno of misTurnos" class="list-group-item">
-                        <div>Titulo: {{turno.title}}</div>
-                        <div>
-                            Inicio:<span class="text-success"> {{turno.start}}</span>
-                        </div>
-                        <div>
-                            Fin:<span class="text-danger"> {{turno.end}}</span>
-                        </div>
-                    </li>
+                    <app-mis-turnos class="mis-turnos-component" *ngFor="let turno of misTurnos" [turno]="turno"></app-mis-turnos>
                 </ul>
             </section>
         </div>

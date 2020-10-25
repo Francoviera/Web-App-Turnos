@@ -19,16 +19,17 @@ export class TurnosComponent implements OnInit {
   
   public misTurnos: any = [];
   public eventsDB: any;
-  public turno: Turno;
 
   constructor() { 
     this.lang= navigator.language;
-    this.turno= {
-      title: '',
-      start: new Date(),
-      end: new Date(),
-      description: ''
-    }
+    this.addMiTurno(
+      {
+        title: "El Pepaaa",
+        start: new Date('2020-10-24T10:00'),
+        end: new Date('2020-10-24T16:00'),
+        description: "ndeah"
+      }
+    );
     this.eventsDB = [
       {
         title: "El Pepaaa",
@@ -71,37 +72,18 @@ export class TurnosComponent implements OnInit {
     }
   }
 
-  addEvent(){
-    console.log(this.turno);
-    this.eventsDB.push(this.turno);
-    console.log(this.eventsDB);
-    var options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+  addMiTurno(turno : Turno){
+    let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
     let value = {
-      title: this.turno.title,
-      start: new Date(this.turno.start).toLocaleDateString("es-ES", options),
-      end: new Date(this.turno.end).toLocaleDateString("es-ES", options),
-      description: this.turno.description
+      title: turno.title,
+      start: new Date(turno.start).toLocaleDateString("es-ES", options),
+      end: new Date(turno.end).toLocaleDateString("es-ES", options),
+      description: turno.description
     }
     this.misTurnos.push(value);
-    this.turno= {
-      title: '',
-      start: new Date(),
-      end: new Date(),
-      description: ''
-    }
-    // if(this.timecheck){
-
-    // }
   }
-  timecheck(value){
-    let check: boolean= false
-    for (let e of this.eventsDB) {
-      if(this.turno.start >= e.start && this.turno.start <= e.start){
-        console.log(e);
-      }
-    }
-
-    return check;
+  showError(value : String){
+    alert(value);
   }
 
   //Ver como implementar el Hover para ver la description del evento

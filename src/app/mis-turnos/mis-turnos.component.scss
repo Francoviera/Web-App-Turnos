@@ -1,0 +1,15 @@
+.mis-turnos{
+    border-radius: 30px;
+}
+.btns-abm button{
+    border-radius: 15px;
+    margin-left: 5px;
+}
+.btns-abm{
+    display: none;
+}
+.mis-turnos:hover{
+    .btns-abm{
+        display: block;
+    }
+}
