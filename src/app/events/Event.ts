@@ -1,4 +1,4 @@
-export class Turno {
+export class Event {
     title: string;
     start: Date;
     end: Date;

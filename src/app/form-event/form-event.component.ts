@@ -1,17 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Turno } from '../turnos/Turno';
+import { Event } from '../events/Event';
 
 @Component({
-  selector: 'app-form-turnos',
-  templateUrl: './form-turnos.component.html',
-  styleUrls: ['./form-turnos.component.scss']
+  selector: 'app-form-event',
+  templateUrl: './form-event.component.html',
+  styleUrls: ['./form-event.component.scss']
 })
-export class FormTurnosComponent implements OnInit {
+export class FormEventComponent implements OnInit {
 
-  public turno: Turno;
+  public event: Event;
 
   constructor() { 
-    this.turno= {
+    this.event= {
       title: '',
       start: new Date(),
       end: new Date(),
@@ -22,21 +22,21 @@ export class FormTurnosComponent implements OnInit {
   @Input()
     eventsDB: any;
   @Input()
-    misTurnos: any;
+    myEvents: any;
   
   @Output()
-    addMiTurno: EventEmitter<Turno> = new EventEmitter<Turno>();
+    addMyEvent: EventEmitter<Event> = new EventEmitter<Event>();
   @Output()
     showError: EventEmitter<String> = new EventEmitter<String>();
   @Output()
-    eventsDBChange: EventEmitter<Turno> = new EventEmitter<Turno>();
+    eventsDBChange: EventEmitter<Event> = new EventEmitter<Event>();
 
   addEvent(){
     if(this.timeCheck()){
-      this.eventsDB.push(this.turno);
+      this.eventsDB.push(this.event);
       this.eventsDBChange.emit();
-      this.addMiTurno.emit(this.turno);
-      this.turno= {
+      this.addMyEvent.emit(this.event);
+      this.event= {
         title: '',
         start: new Date(),
         end: new Date(),
@@ -44,16 +44,16 @@ export class FormTurnosComponent implements OnInit {
       }
     }else{
       this.showError.emit("Ingrese fechas de inicio y fin Validas!");
-      this.turno.start= new Date();
-      this.turno.end= new Date();
+      this.event.start= new Date();
+      this.event.end= new Date();
     }
   }
   timeCheck(){
-    if(this.turno.start >= this.turno.end){
+    if(this.event.start >= this.event.end){
       return false
     }
     // for (let e of this.eventsDB) {
-    //   if(this.turno.start >= e.start && this.turno.start <= e.start){
+    //   if(this.event.start >= e.start && this.event.start <= e.start){
     //     console.log(e);
     //   }
     // }

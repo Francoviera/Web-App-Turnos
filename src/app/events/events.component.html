@@ -3,7 +3,6 @@
         <div class="col-md-9">
             <!-- <full-calendar class="calendar" [events]="events" [options]="calendarOptions" (mouseover)="viewDetail()"></full-calendar> -->
             <full-calendar 
-                class="" 
                 deepChangeDetection="true"
                 [options]="calendarOptions"      
             >
@@ -13,19 +12,19 @@
     </div>
     <div class="row">
         <div class="col-md-8"> -->
-            <app-form-turnos 
+            <app-form-event 
                 [(eventsDB)]="eventsDB"
-                [(misTurnos)]="misTurnos"
-                (addMiTurno)=addMiTurno($event)
+                [(myEvents)]="myEvents"
+                (addMyEvent)=addMyEvent($event)
                 (showError)= showError($event)
             >
-            </app-form-turnos>
+            </app-form-event>
         </div>
         <div class="col-md-3">
             <section>
                 <h2>Mis Turnos</h2>
                 <ul class="list-group">
-                    <app-mis-turnos class="mis-turnos-component" *ngFor="let turno of misTurnos" [turno]="turno"></app-mis-turnos>
+                    <app-my-events class="my-events-component" *ngFor="let event of myEvents" [event]="event"></app-my-events>
                 </ul>
             </section>
         </div>

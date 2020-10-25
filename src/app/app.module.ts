@@ -5,9 +5,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 // import dayGridPlugin from '@fullcalendar/daygrid';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TurnosComponent } from './turnos/turnos.component';
-import { MisTurnosComponent } from './mis-turnos/mis-turnos.component';
-import { FormTurnosComponent } from './form-turnos/form-turnos.component';
+import { EventsComponent } from './events/events.component';
+import { MyEventsComponent } from './my-events/my-events.component';
+import { FormEventComponent } from './form-event/form-event.component';
 
 // FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 //   dayGridPlugin
@@ -15,9 +15,9 @@ import { FormTurnosComponent } from './form-turnos/form-turnos.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TurnosComponent,
-    MisTurnosComponent,
-    FormTurnosComponent
+    EventsComponent,
+    MyEventsComponent,
+    FormEventComponent
   ],
   imports: [
     BrowserModule,

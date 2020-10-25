@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Turno } from './Turno';
+import { Event } from './Event';
 import { Calendar, CalendarContent, CalendarData, CalendarDataProvider, CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -7,22 +7,22 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 
 @Component({
-  selector: 'app-turnos',
-  templateUrl: './turnos.component.html',
-  styleUrls: ['./turnos.component.scss']
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.scss']
 })
-export class TurnosComponent implements OnInit {
+export class EventsComponent implements OnInit {
 
   // eventsDB: any; //Averiguar de que tipo es esta variable
   calendarOptions: CalendarOptions; 
   lang: string;
   
-  public misTurnos: any = [];
+  public myEvents: any = [];
   public eventsDB: any;
 
   constructor() { 
     this.lang= navigator.language;
-    this.addMiTurno(
+    this.addMyEvent(
       {
         title: "El Pepaaa",
         start: new Date('2020-10-24T10:00'),
@@ -72,15 +72,15 @@ export class TurnosComponent implements OnInit {
     }
   }
 
-  addMiTurno(turno : Turno){
+  addMyEvent(event : Event){
     let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
     let value = {
-      title: turno.title,
-      start: new Date(turno.start).toLocaleDateString("es-ES", options),
-      end: new Date(turno.end).toLocaleDateString("es-ES", options),
-      description: turno.description
+      title: event.title,
+      start: new Date(event.start).toLocaleDateString("es-ES", options),
+      end: new Date(event.end).toLocaleDateString("es-ES", options),
+      description: event.description
     }
-    this.misTurnos.push(value);
+    this.myEvents.push(value);
   }
   showError(value : String){
     alert(value);

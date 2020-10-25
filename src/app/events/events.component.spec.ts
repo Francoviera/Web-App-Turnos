@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormTurnosComponent } from './form-turnos.component';
+import { EventsComponent } from './events.component';
 
-describe('FormTurnosComponent', () => {
-  let component: FormTurnosComponent;
-  let fixture: ComponentFixture<FormTurnosComponent>;
+describe('TurnosComponent', () => {
+  let component: EventsComponent;
+  let fixture: ComponentFixture<EventsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormTurnosComponent ]
+      declarations: [ EventsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormTurnosComponent);
+    fixture = TestBed.createComponent(EventsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
