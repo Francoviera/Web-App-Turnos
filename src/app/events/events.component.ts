@@ -69,16 +69,6 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  // addMyEvent(event : Event){
-  //   let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
-  //   let value = {
-  //     title: event.title,
-  //     start: new Date(event.start).toLocaleDateString("es-ES", options),
-  //     end: new Date(event.end).toLocaleDateString("es-ES", options),
-  //     description: event.description
-  //   }
-  //   this.myEvents.push(value);
-  // }
   showError(value : String){
     alert(value);
   }

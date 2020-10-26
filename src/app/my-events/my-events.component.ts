@@ -9,7 +9,7 @@ import { Event } from '../events/Event';
 })
 export class MyEventsComponent implements OnInit {
 
-  constructor(private eventList : EventListService) { }
+  constructor() { }
   @Input()
   event: Event;
 
