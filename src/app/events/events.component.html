@@ -1,21 +1,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
-            <!-- <full-calendar class="calendar" [events]="events" [options]="calendarOptions" (mouseover)="viewDetail()"></full-calendar> -->
-            <full-calendar 
-                deepChangeDetection="true"
-                [options]="calendarOptions"      
-            >
-            </full-calendar>
-    
-        <!-- </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8"> -->
+            <section>
+                <!-- <full-calendar class="calendar" [events]="events" [options]="calendarOptions" (mouseover)="viewDetail()"></full-calendar> -->
+                <full-calendar 
+                    deepChangeDetection="true"
+                    [options]="calendarOptions"      
+                >
+                </full-calendar>
+            </section>
             <app-form-event 
-                [(eventsDB)]="eventsDB"
-                [(myEvents)]="myEvents"
-                (addMyEvent)=addMyEvent($event)
                 (showError)= showError($event)
             >
             </app-form-event>

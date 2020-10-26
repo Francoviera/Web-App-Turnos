@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from './Event';
+import { EventListService } from '../event-list.service';
 import { Calendar, CalendarContent, CalendarData, CalendarDataProvider, CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-
 
 @Component({
   selector: 'app-events',
@@ -13,47 +13,44 @@ import interactionPlugin from '@fullcalendar/interaction';
 })
 export class EventsComponent implements OnInit {
 
-  // eventsDB: any; //Averiguar de que tipo es esta variable
   calendarOptions: CalendarOptions; 
   lang: string;
   
   public myEvents: any = [];
-  public eventsDB: any;
+  public eventsDB: Event[] = [];
 
-  constructor() { 
+  constructor(private events: EventListService) { 
+    events.eventList.subscribe((observable) => this.eventsDB = observable);
+    events.myEvents.subscribe((observable) => this.myEvents = observable);
     this.lang= navigator.language;
-    this.addMyEvent(
-      {
-        title: "El Pepaaa",
-        start: new Date('2020-10-24T10:00'),
-        end: new Date('2020-10-24T16:00'),
-        description: "ndeah"
-      }
+    events.addEvents(
+      [
+        {
+          title: "El Pepaaa",
+          start: new Date('2020-10-24T10:00'),
+          end: new Date('2020-10-24T16:00'),
+          description: "ndeah"
+        },
+        {
+          title: "El Pepe",
+          start: new Date('2020-11-10T10:00'),
+          end: new Date('2020-11-10T16:00'),
+          description: ""
+        },
+        {
+          title: "El Pepa",
+          start: new Date('2020-10-10T10:00'),
+          end: new Date('2020-10-10T16:00'),
+          description: ""
+        },
+        {
+          title: "El Pepa",
+          start: new Date('2020-10-10T16:30'),
+          end: new Date('2020-10-10T17:00'),
+          description:"sape",
+        }
+      ] 
     );
-    this.eventsDB = [
-      {
-        title: "El Pepaaa",
-        start: '2020-10-24T10:00',
-        end: '2020-10-24T16:00',
-        description: "ndeah"
-      },
-      {
-        title: "El Pepe",
-        start: '2020-11-10T10:00',
-        end: '2020-11-10T16:00',
-      },
-      {
-        title: "El Pepa",
-        start: '2020-10-10T10:00',
-        end: '2020-10-10T16:00',
-      },
-      {
-        title: "El Pepa",
-        start: '2020-10-10T16:30',
-        end: '2020-10-10T17:00',
-        description:"sape",
-      }
-    ] 
     this.calendarOptions= {
       plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
       // initialView: 'dayGridMonth', //Ver para que sirve
@@ -64,7 +61,7 @@ export class EventsComponent implements OnInit {
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
       // themeSystem: 'Bostrap', // Investigar como cambiar el tema del Calendario
-      timeZone: 'UTC',
+      // timeZone: 'UTC', Se adelante por unas horas
       locale: this.lang,
       dateClick: (e) =>  {
         console.log(e); //Esto serviria para ir a otro Componente con detalles sobre el evento
@@ -72,16 +69,16 @@ export class EventsComponent implements OnInit {
     }
   }
 
-  addMyEvent(event : Event){
-    let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
-    let value = {
-      title: event.title,
-      start: new Date(event.start).toLocaleDateString("es-ES", options),
-      end: new Date(event.end).toLocaleDateString("es-ES", options),
-      description: event.description
-    }
-    this.myEvents.push(value);
-  }
+  // addMyEvent(event : Event){
+  //   let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+  //   let value = {
+  //     title: event.title,
+  //     start: new Date(event.start).toLocaleDateString("es-ES", options),
+  //     end: new Date(event.end).toLocaleDateString("es-ES", options),
+  //     description: event.description
+  //   }
+  //   this.myEvents.push(value);
+  // }
   showError(value : String){
     alert(value);
   }
