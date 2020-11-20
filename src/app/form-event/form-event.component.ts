@@ -13,6 +13,7 @@ export class FormEventComponent implements OnInit {
 
   constructor(private events: EventListService) { 
     this.event= {
+      ui: this.events.getUi(),
       title: '',
       start: new Date(),
       end: new Date(),
@@ -23,10 +24,11 @@ export class FormEventComponent implements OnInit {
   @Output()
     showError: EventEmitter<String> = new EventEmitter<String>();
 
-  addEvent(){
-    let result = this.events.addEvent(this.event);
+  async addEvent(){
+    let result = await this.events.addEvent(this.event);
     if(result === null){
       this.event= {
+        ui: this.events.getUi(),
         title: '',
         start: new Date(),
         end: new Date(),

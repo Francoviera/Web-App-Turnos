@@ -26,24 +26,28 @@ export class EventsComponent implements OnInit {
     events.addEvents(
       [
         {
+          ui: 0,
           title: "El Pepaaa",
           start: new Date('2020-10-24T10:00'),
           end: new Date('2020-10-24T16:00'),
           description: "ndeah"
         },
         {
+          ui: 1,
           title: "El Pepe",
           start: new Date('2020-11-10T10:00'),
           end: new Date('2020-11-10T16:00'),
           description: ""
         },
         {
+          ui: 2,
           title: "El Pepa",
           start: new Date('2020-10-10T10:00'),
           end: new Date('2020-10-10T16:00'),
           description: ""
         },
         {
+          ui: 3,
           title: "El Pepa",
           start: new Date('2020-10-10T16:30'),
           end: new Date('2020-10-10T17:00'),

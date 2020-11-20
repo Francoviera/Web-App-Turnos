@@ -1,7 +1,7 @@
-export class Event {
+export class MyEvent {
     ui: Number;
     title: string;
-    start: Date;
-    end: Date;
+    start: String;
+    end: String;
     description: string;
   }

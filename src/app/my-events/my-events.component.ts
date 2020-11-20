@@ -9,11 +9,17 @@ import { Event } from '../events/Event';
 })
 export class MyEventsComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor(private events: EventListService) { }
   @Input()
   event: Event;
 
   ngOnInit(): void {
+  }
+
+  deleteEvent(ui){
+    this.events.deleteEvent(ui);
   }
 
 }
