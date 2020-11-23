@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Proposito de Software
+
+El proposito del mismo se penso en desarrollar un sistema de control de eventos con la intencion que se pueda adaptar a cualquier  rubro del mercado, poder facilitar y cumplir las necesidades del cliente.
+
+##  Como surgio
+El mismo surgio a partir de un seminario de Angular de la unicen 
